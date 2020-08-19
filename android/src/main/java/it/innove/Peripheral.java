@@ -97,7 +97,7 @@ public class Peripheral extends BluetoothGattCallback {
 			this.connectCallback = callback;
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 				Log.d(BleManager.LOG_TAG, " Is Or Greater than M $mBluetoothDevice");
-				gatt = device.connectGatt(activity, false, this, BluetoothDevice.TRANSPORT_LE);
+				gatt = device.connectGatt(activity, true, this, BluetoothDevice.TRANSPORT_LE);
 			} else {
 				Log.d(BleManager.LOG_TAG, " Less than M");
 				try {
@@ -110,7 +110,7 @@ public class Peripheral extends BluetoothGattCallback {
 				} catch (Exception e) {
 					e.printStackTrace();
 					Log.d(TAG, " Catch to call normal connection");
-					gatt = device.connectGatt(activity, false, this);
+					gatt = device.connectGatt(activity, true, this);
 				}
 			}
 		} else {
